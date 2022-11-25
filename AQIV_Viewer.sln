@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AQIV_Viewer", "AQIV_Viewer\AQIV_Viewer.csproj", "{55E130BC-7308-4EFE-B875-120B5A79BC4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55E130BC-7308-4EFE-B875-120B5A79BC4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55E130BC-7308-4EFE-B875-120B5A79BC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55E130BC-7308-4EFE-B875-120B5A79BC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55E130BC-7308-4EFE-B875-120B5A79BC4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CAD375D-306A-416B-B8F3-212165060033}
+	EndGlobalSection
+EndGlobal
