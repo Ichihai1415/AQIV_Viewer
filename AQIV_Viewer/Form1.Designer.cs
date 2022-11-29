@@ -28,25 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.PGA = new System.Windows.Forms.Label();
             this.StartTime = new System.Windows.Forms.TextBox();
             this.Times = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.RealTimeCB = new System.Windows.Forms.CheckBox();
-            this.RealTimeTimes = new System.Windows.Forms.TextBox();
             this.View = new System.Windows.Forms.Button();
+            this.NowTime = new System.Windows.Forms.Button();
+            this.RealTime = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
             this.SuspendLayout();
             // 
             // Chart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.Chart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.Chart.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.Chart.Legends.Add(legend5);
             this.Chart.Location = new System.Drawing.Point(20, 20);
             this.Chart.Margin = new System.Windows.Forms.Padding(5);
             this.Chart.Name = "Chart";
@@ -95,22 +97,13 @@
             // RealTimeCB
             // 
             this.RealTimeCB.AutoSize = true;
-            this.RealTimeCB.Enabled = false;
-            this.RealTimeCB.Location = new System.Drawing.Point(258, 328);
+            this.RealTimeCB.Location = new System.Drawing.Point(325, 330);
             this.RealTimeCB.Name = "RealTimeCB";
-            this.RealTimeCB.Size = new System.Drawing.Size(219, 28);
+            this.RealTimeCB.Size = new System.Drawing.Size(116, 28);
             this.RealTimeCB.TabIndex = 6;
-            this.RealTimeCB.Text = "リアルタイム 過去          s";
+            this.RealTimeCB.Text = "リアルタイム";
             this.RealTimeCB.UseVisualStyleBackColor = true;
-            // 
-            // RealTimeTimes
-            // 
-            this.RealTimeTimes.Enabled = false;
-            this.RealTimeTimes.Location = new System.Drawing.Point(379, 326);
-            this.RealTimeTimes.Name = "RealTimeTimes";
-            this.RealTimeTimes.Size = new System.Drawing.Size(35, 32);
-            this.RealTimeTimes.TabIndex = 7;
-            this.RealTimeTimes.Text = "1";
+            this.RealTimeCB.CheckedChanged += new System.EventHandler(this.RealTimeCB_CheckedChanged);
             // 
             // View
             // 
@@ -122,13 +115,28 @@
             this.View.UseVisualStyleBackColor = true;
             this.View.Click += new System.EventHandler(this.View_Click);
             // 
+            // NowTime
+            // 
+            this.NowTime.Location = new System.Drawing.Point(253, 326);
+            this.NowTime.Name = "NowTime";
+            this.NowTime.Size = new System.Drawing.Size(60, 30);
+            this.NowTime.TabIndex = 9;
+            this.NowTime.Text = "現在";
+            this.NowTime.UseVisualStyleBackColor = true;
+            this.NowTime.Click += new System.EventHandler(this.NowTime_Click);
+            // 
+            // RealTime
+            // 
+            this.RealTime.Interval = 1;
+            this.RealTime.Tick += new System.EventHandler(this.RealTime_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 360);
+            this.Controls.Add(this.NowTime);
             this.Controls.Add(this.View);
-            this.Controls.Add(this.RealTimeTimes);
             this.Controls.Add(this.RealTimeCB);
             this.Controls.Add(this.Times);
             this.Controls.Add(this.StartTime);
@@ -154,8 +162,9 @@
         private System.Windows.Forms.TextBox Times;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox RealTimeCB;
-        private System.Windows.Forms.TextBox RealTimeTimes;
         private System.Windows.Forms.Button View;
+        private System.Windows.Forms.Button NowTime;
+        private System.Windows.Forms.Timer RealTime;
     }
 }
 
