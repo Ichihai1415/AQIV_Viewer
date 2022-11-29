@@ -51,6 +51,7 @@ namespace AQIV_Viewer
                     }
                 }
                 PGA.Text = $"Max:{MaxValue}gal";
+                Message.Text = "";
             }
             catch (Exception ex)
             {
@@ -118,6 +119,7 @@ namespace AQIV_Viewer
                 }
                 PGA.Text = $"Max:{MaxValue}gal";
                 StartTime.Text = GT.ToString("yyyy/MM/dd HH:mm:ss");
+                Message.Text = "";
             }
             catch (Exception ex)
             {

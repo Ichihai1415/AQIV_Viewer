@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.PGA = new System.Windows.Forms.Label();
             this.StartTime = new System.Windows.Forms.TextBox();
@@ -46,10 +46,10 @@
             // 
             // Chart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.Chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.Chart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.Chart.Legends.Add(legend2);
             this.Chart.Location = new System.Drawing.Point(20, 20);
             this.Chart.Margin = new System.Windows.Forms.Padding(5);
             this.Chart.Name = "Chart";
@@ -98,6 +98,8 @@
             // RealTimeCB
             // 
             this.RealTimeCB.AutoSize = true;
+            this.RealTimeCB.Checked = true;
+            this.RealTimeCB.CheckState = System.Windows.Forms.CheckState.Checked;
             this.RealTimeCB.Location = new System.Drawing.Point(325, 330);
             this.RealTimeCB.Name = "RealTimeCB";
             this.RealTimeCB.Size = new System.Drawing.Size(116, 28);
@@ -108,6 +110,7 @@
             // 
             // View
             // 
+            this.View.Enabled = false;
             this.View.Location = new System.Drawing.Point(431, 326);
             this.View.Name = "View";
             this.View.Size = new System.Drawing.Size(60, 30);
@@ -128,6 +131,7 @@
             // 
             // RealTime
             // 
+            this.RealTime.Enabled = true;
             this.RealTime.Tick += new System.EventHandler(this.RealTime_Tick);
             // 
             // Message
