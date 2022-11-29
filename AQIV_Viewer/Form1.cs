@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AQIV_Viewer
 {
@@ -16,5 +12,56 @@ namespace AQIV_Viewer
         {
             InitializeComponent();
         }
+
+        private void View_Click(object sender, EventArgs e)
+        {
+            Chart.Series.Clear();
+            Chart.ChartAreas.Clear();
+            Chart.ChartAreas.Add(new ChartArea("Main"));
+            string Name1 = "加速度x";
+            string Name2 = "加速度y";
+            string Name3 = "加速度z";
+            string Name4 = "合成加速度";
+            Chart.Series.Add("加速度x");
+            Chart.Series.Add("加速度y");
+            Chart.Series.Add("加速度z");
+            Chart.Series.Add("合成加速度");
+            Chart.Series[Name1].ChartType = SeriesChartType.Line;
+            Chart.Series[Name2].ChartType = SeriesChartType.Line;
+            Chart.Series[Name3].ChartType = SeriesChartType.Line;
+            Chart.Series[Name4].ChartType = SeriesChartType.Line;
+
+            DateTime STime = new DateTime();
+            DateTime.TryParse(StartTime.Text, out STime);
+            int Ts = 0;
+            if (RealTimeCB.Checked)
+                Ts = Convert.ToInt32(RealTimeTimes.Text);
+            else
+                Ts = Convert.ToInt32(Times.Text);
+            double MaxValue = 0;
+            string Directory = "C:\\Users\\proje\\source\\repos\\Arduino_Quake_Intensity_Viewer\\Arduino_Quake_Intensity_Viewer\\bin\\x64\\Debug\\Logs";
+            for (int i = 0; i < Ts; i++)
+            {
+                DateTime GT = STime.AddSeconds(-i);
+                string Value1 = File.ReadAllText($"{Directory}\\{GT.Year}\\{GT.Month}\\{GT.Day}\\{GT.Hour}\\{GT.Minute}\\{GT:yyyyMMddHHmmss}.txt").Replace("\n", ",");
+                string[] Value2 = Value1.Split(',');
+                for (int j = 0; j < Value2.Length / 4; j++)
+                {
+                    Chart.Series[Name1].Points.AddY(Convert.ToDouble(Value2[j * 4]));
+                    Chart.Series[Name2].Points.AddY(Convert.ToDouble(Value2[j * 4 + 1]));
+                    Chart.Series[Name3].Points.AddY(Convert.ToDouble(Value2[j * 4 + 2]));
+                    Chart.Series[Name4].Points.AddY(Convert.ToDouble(Value2[j * 4 + 3]));
+                    if (MaxValue < Convert.ToDouble(Value2[j * 4 + 3]))
+                        MaxValue = Convert.ToDouble(Value2[j * 4 + 3]);
+                }
+            }
+            PGA.Text = $"Max:{MaxValue}gal";
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            StartTime.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+        }
     }
 }
+
