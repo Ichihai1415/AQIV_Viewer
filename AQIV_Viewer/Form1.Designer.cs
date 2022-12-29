@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.PGA = new System.Windows.Forms.Label();
             this.StartTime = new System.Windows.Forms.TextBox();
             this.Times = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.SubText = new System.Windows.Forms.Label();
             this.RealTimeCB = new System.Windows.Forms.CheckBox();
             this.View = new System.Windows.Forms.Button();
             this.NowTime = new System.Windows.Forms.Button();
@@ -46,10 +46,10 @@
             // 
             // Chart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.Chart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.Chart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Chart.Legends.Add(legend1);
             this.Chart.Location = new System.Drawing.Point(20, 20);
             this.Chart.Margin = new System.Windows.Forms.Padding(5);
             this.Chart.Name = "Chart";
@@ -84,16 +84,16 @@
             this.Times.TabIndex = 4;
             this.Times.Text = "1";
             // 
-            // label2
+            // SubText
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Roboto", 12F);
-            this.label2.Location = new System.Drawing.Point(179, 331);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 24);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "～          s";
+            this.SubText.AutoSize = true;
+            this.SubText.Font = new System.Drawing.Font("Roboto", 12F);
+            this.SubText.Location = new System.Drawing.Point(179, 331);
+            this.SubText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SubText.Name = "SubText";
+            this.SubText.Size = new System.Drawing.Size(89, 24);
+            this.SubText.TabIndex = 5;
+            this.SubText.Text = "～          s";
             // 
             // RealTimeCB
             // 
@@ -139,6 +139,7 @@
             this.Message.AutoSize = true;
             this.Message.Font = new System.Drawing.Font("Roboto", 10F);
             this.Message.Location = new System.Drawing.Point(0, 0);
+            this.Message.MaximumSize = new System.Drawing.Size(640, 360);
             this.Message.Name = "Message";
             this.Message.Size = new System.Drawing.Size(0, 20);
             this.Message.TabIndex = 10;
@@ -156,7 +157,7 @@
             this.Controls.Add(this.StartTime);
             this.Controls.Add(this.PGA);
             this.Controls.Add(this.Chart);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.SubText);
             this.Font = new System.Drawing.Font("Roboto", 12F);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Form1";
@@ -174,7 +175,7 @@
         private System.Windows.Forms.Label PGA;
         private System.Windows.Forms.TextBox StartTime;
         private System.Windows.Forms.TextBox Times;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label SubText;
         private System.Windows.Forms.CheckBox RealTimeCB;
         private System.Windows.Forms.Button View;
         private System.Windows.Forms.Button NowTime;

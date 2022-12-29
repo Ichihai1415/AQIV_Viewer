@@ -37,17 +37,24 @@ namespace AQIV_Viewer
                 double MaxValue = 0;
                 for (int i = 0; i < Convert.ToInt32(Times.Text); i++)
                 {
-                    DateTime GT = STime.AddSeconds(-i);
-                    string Value1 = File.ReadAllText($"{Directory}\\{GT.Year}\\{GT.Month}\\{GT.Day}\\{GT.Hour}\\{GT.Minute}\\{GT:yyyyMMddHHmmss}.txt").Replace("\n", ",");
-                    string[] Value2 = Value1.Split(',');
-                    for (int j = 0; j < Value2.Length / 4; j++)
+                    try
                     {
-                        Chart.Series[Name1].Points.AddY(Convert.ToDouble(Value2[j * 4]));
-                        Chart.Series[Name2].Points.AddY(Convert.ToDouble(Value2[j * 4 + 1]));
-                        Chart.Series[Name3].Points.AddY(Convert.ToDouble(Value2[j * 4 + 2]));
-                        Chart.Series[Name4].Points.AddY(Convert.ToDouble(Value2[j * 4 + 3]));
-                        if (MaxValue < Convert.ToDouble(Value2[j * 4 + 3]))
-                            MaxValue = Convert.ToDouble(Value2[j * 4 + 3]);
+                        DateTime GT = STime.AddSeconds(i);
+                        string Value1 = File.ReadAllText($"{Directory}\\{GT.Year}\\{GT.Month}\\{GT.Day}\\{GT.Hour}\\{GT.Minute}\\{GT:yyyyMMddHHmmss}.txt").Replace("\n", ",");
+                        string[] Value2 = Value1.Split(',');
+                        for (int j = 0; j < Value2.Length / 4; j++)
+                        {
+                            Chart.Series[Name1].Points.AddY(Convert.ToDouble(Value2[j * 4]));
+                            Chart.Series[Name2].Points.AddY(Convert.ToDouble(Value2[j * 4 + 1]));
+                            Chart.Series[Name3].Points.AddY(Convert.ToDouble(Value2[j * 4 + 2]));
+                            Chart.Series[Name4].Points.AddY(Convert.ToDouble(Value2[j * 4 + 3]));
+                            if (MaxValue < Convert.ToDouble(Value2[j * 4 + 3]))
+                                MaxValue = Convert.ToDouble(Value2[j * 4 + 3]);
+                        }
+                    }
+                    catch
+                    {
+
                     }
                 }
                 PGA.Text = $"Max:{MaxValue}gal";
