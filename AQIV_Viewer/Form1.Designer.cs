@@ -159,7 +159,9 @@
             this.Controls.Add(this.Chart);
             this.Controls.Add(this.SubText);
             this.Font = new System.Drawing.Font("Roboto", 12F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(5);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "AQIV Viewer";
             this.Load += new System.EventHandler(this.Form1_Load);

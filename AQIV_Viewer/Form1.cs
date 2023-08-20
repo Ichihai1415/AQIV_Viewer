@@ -35,6 +35,7 @@ namespace AQIV_Viewer
 
                 DateTime STime = Convert.ToDateTime(StartTime.Text);
                 double MaxValue = 0;
+                int Count = 0;
                 for (int i = 0; i < Convert.ToInt32(Times.Text); i++)
                 {
                     try
@@ -44,6 +45,7 @@ namespace AQIV_Viewer
                         string[] Value2 = Value1.Split(',');
                         for (int j = 0; j < Value2.Length / 4; j++)
                         {
+                            Count++;
                             Chart.Series[Name1].Points.AddY(Convert.ToDouble(Value2[j * 4]));
                             Chart.Series[Name2].Points.AddY(Convert.ToDouble(Value2[j * 4 + 1]));
                             Chart.Series[Name3].Points.AddY(Convert.ToDouble(Value2[j * 4 + 2]));
@@ -57,7 +59,7 @@ namespace AQIV_Viewer
 
                     }
                 }
-                PGA.Text = $"Max:{MaxValue}gal";
+                PGA.Text = $"Max:{MaxValue}gal  {Count}";
                 Message.Text = "";
             }
             catch (Exception ex)
@@ -80,6 +82,7 @@ namespace AQIV_Viewer
         {
             if (RealTimeCB.Checked)
             {
+                Times.Text = "1";
                 RealTime.Interval = 100;
                 RealTime.Enabled = true;
                 View.Enabled = false;
@@ -115,8 +118,10 @@ namespace AQIV_Viewer
                 DateTime GT = DateTime.Now.AddSeconds(-1);
                 string Value1 = File.ReadAllText($"{Directory}\\{GT.Year}\\{GT.Month}\\{GT.Day}\\{GT.Hour}\\{GT.Minute}\\{GT:yyyyMMddHHmmss}.txt").Replace("\n", ",");
                 string[] Value2 = Value1.Split(',');
+                int Count = 0;
                 for (int j = 0; j < Value2.Length / 4; j++)
                 {
+                    Count++;
                     Chart.Series[Name1].Points.AddY(Convert.ToDouble(Value2[j * 4]));
                     Chart.Series[Name2].Points.AddY(Convert.ToDouble(Value2[j * 4 + 1]));
                     Chart.Series[Name3].Points.AddY(Convert.ToDouble(Value2[j * 4 + 2]));
@@ -124,9 +129,14 @@ namespace AQIV_Viewer
                     if (MaxValue < Convert.ToDouble(Value2[j * 4 + 3]))
                         MaxValue = Convert.ToDouble(Value2[j * 4 + 3]);
                 }
-                PGA.Text = $"Max:{MaxValue}gal";
+                PGA.Text = $"Max:{MaxValue}gal  {Count}";
                 StartTime.Text = GT.ToString("yyyy/MM/dd HH:mm:ss");
                 Message.Text = "";
+            }
+            catch(FileNotFoundException ex)
+            {
+                Message.Text = ex.Message;
+                RealTime.Interval = 1100;
             }
             catch (Exception ex)
             {
