@@ -11,7 +11,7 @@ namespace AQIV_Viewer
         {
             InitializeComponent();
         }
-        public string Directory = "C:\\Users\\proje\\source\\repos\\Arduino_Quake_Intensity_Viewer\\Arduino_Quake_Intensity_Viewer\\bin\\x64\\Debug\\Logs";
+        public string Directory = "C:\\Ichihai1415\\source\\vs\\Arduino_Quake_Intensity_Viewer\\Arduino_Quake_Intensity_Viewer\\bin\\x64\\Debug\\Logs";
 
         private void View_Click(object sender, EventArgs e)
         {
