@@ -11,7 +11,7 @@ namespace AQIV_Viewer
         {
             InitializeComponent();
         }
-        public string Directory = "C:\\Ichihai1415\\source\\vs\\Arduino_Quake_Intensity_Viewer\\Arduino_Quake_Intensity_Viewer\\bin\\x64\\Debug\\Logs";
+        public string Directory = "D:\\Logs\\acc-1";
 
         private void View_Click(object sender, EventArgs e)
         {
@@ -33,25 +33,25 @@ namespace AQIV_Viewer
                 Chart.Series[Name3].ChartType = SeriesChartType.Line;
                 Chart.Series[Name4].ChartType = SeriesChartType.Line;
 
-                DateTime STime = Convert.ToDateTime(StartTime.Text);
+                DateTime STime = DateTime.Parse(StartTime.Text);
                 double MaxValue = 0;
                 int Count = 0;
-                for (int i = 0; i < Convert.ToInt32(Times.Text); i++)
+                for (int i = 0; i < int.Parse(Times.Text); i++)
                 {
                     try
                     {
                         DateTime GT = STime.AddSeconds(i);
-                        string Value1 = File.ReadAllText($"{Directory}\\{GT.Year}\\{GT.Month}\\{GT.Day}\\{GT.Hour}\\{GT.Minute}\\{GT:yyyyMMddHHmmss}.txt").Replace("\n", ",");
+                        string Value1 = File.ReadAllText($"{Directory}\\{GT.Month}\\{GT.Day}\\{GT.Hour}\\{GT.Minute}\\{GT:HHmmss}.txt").Replace("\n", ",");
                         string[] Value2 = Value1.Split(',');
                         for (int j = 0; j < Value2.Length / 4; j++)
                         {
                             Count++;
-                            Chart.Series[Name1].Points.AddY(Convert.ToDouble(Value2[j * 4]));
-                            Chart.Series[Name2].Points.AddY(Convert.ToDouble(Value2[j * 4 + 1]));
-                            Chart.Series[Name3].Points.AddY(Convert.ToDouble(Value2[j * 4 + 2]));
-                            Chart.Series[Name4].Points.AddY(Convert.ToDouble(Value2[j * 4 + 3]));
-                            if (MaxValue < Convert.ToDouble(Value2[j * 4 + 3]))
-                                MaxValue = Convert.ToDouble(Value2[j * 4 + 3]);
+                            Chart.Series[Name1].Points.AddY(double.Parse(Value2[j * 4]));
+                            Chart.Series[Name2].Points.AddY(double.Parse(Value2[j * 4 + 1]));
+                            Chart.Series[Name3].Points.AddY(double.Parse(Value2[j * 4 + 2]));
+                            Chart.Series[Name4].Points.AddY(double.Parse(Value2[j * 4 + 3]));
+                            if (MaxValue < double.Parse(Value2[j * 4 + 3]))
+                                MaxValue = double.Parse(Value2[j * 4 + 3]);
                         }
                     }
                     catch
@@ -116,18 +116,18 @@ namespace AQIV_Viewer
                 Chart.Series[Name4].ChartType = SeriesChartType.Line;
                 double MaxValue = 0;
                 DateTime GT = DateTime.Now.AddSeconds(-1);
-                string Value1 = File.ReadAllText($"{Directory}\\{GT.Year}\\{GT.Month}\\{GT.Day}\\{GT.Hour}\\{GT.Minute}\\{GT:yyyyMMddHHmmss}.txt").Replace("\n", ",");
+                string Value1 = File.ReadAllText($"{Directory}\\{GT.Month}\\{GT.Day}\\{GT.Hour}\\{GT.Minute}\\{GT:HHmmss}.txt").Replace("\n", ",");
                 string[] Value2 = Value1.Split(',');
                 int Count = 0;
                 for (int j = 0; j < Value2.Length / 4; j++)
                 {
                     Count++;
-                    Chart.Series[Name1].Points.AddY(Convert.ToDouble(Value2[j * 4]));
-                    Chart.Series[Name2].Points.AddY(Convert.ToDouble(Value2[j * 4 + 1]));
-                    Chart.Series[Name3].Points.AddY(Convert.ToDouble(Value2[j * 4 + 2]));
-                    Chart.Series[Name4].Points.AddY(Convert.ToDouble(Value2[j * 4 + 3]));
-                    if (MaxValue < Convert.ToDouble(Value2[j * 4 + 3]))
-                        MaxValue = Convert.ToDouble(Value2[j * 4 + 3]);
+                    Chart.Series[Name1].Points.AddY(double.Parse(Value2[j * 4]));
+                    Chart.Series[Name2].Points.AddY(double.Parse(Value2[j * 4 + 1]));
+                    Chart.Series[Name3].Points.AddY(double.Parse(Value2[j * 4 + 2]));
+                    Chart.Series[Name4].Points.AddY(double.Parse(Value2[j * 4 + 3]));
+                    if (MaxValue < double.Parse(Value2[j * 4 + 3]))
+                        MaxValue = double.Parse(Value2[j * 4 + 3]);
                 }
                 PGA.Text = $"Max:{MaxValue}gal  {Count}";
                 StartTime.Text = GT.ToString("yyyy/MM/dd HH:mm:ss");
